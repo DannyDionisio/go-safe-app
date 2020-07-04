@@ -11,21 +11,19 @@ import PraxisBeer from "./assets/praxis-beer.jpg";
 import TeamPraxis from "./assets/team.jpg";
 import Phone from "./assets/telefone.svg";
 import Hours from "./assets/relogio.svg";
-import Email from "./assets/email.svg";
+import Whatsapp from "./assets/whatsapp.svg";
 
 import bulmaCarousel from "bulma-carousel/dist/js/bulma-carousel.min.js";
+import "bulma-carousel/dist/css/bulma-carousel.min.css";
 
 class RestaurantDetail extends Component {
+  componentDidMount() {
+    bulmaCarousel.attach("#carousel-demo", {
+      slidesToScroll: 1,
+      slidesToShow: 2,
+    });
+  }
   render() {
-    // Initialize all elements with carousel class.
-    const carousels = bulmaCarousel.attach(".carousel", 3);
-
-    // To access to bulmaCarousel instance of an element
-    const element = document.querySelector("#my-element");
-    if (element && element.bulmaCarousel) {
-      // bulmaCarousel instance is available as element.bulmaCarousel
-    }
-
     return (
       <div className="ctn-restaurant">
         <div className="banner">
@@ -38,53 +36,32 @@ class RestaurantDetail extends Component {
               <p>12h às 22h</p>
             </div>
           </div>
-        </div>
-
-        <div>
-          <h1>Praxis</h1>
-          <div className="rating_rest">
-            <img src={OccupationImg} alt="Ocupação" />
-            <spam>20%</spam>
-            <img src={StarImg} alt="Rating" />
-            <spam>70%</spam>
+          <div className="contacts">
+            <img src={Whatsapp} alt="Whatsapp" />
+            <img src={Phone} alt="Contato" />
           </div>
         </div>
-        <div className="midia">
-          <h1>Fotos & Videos</h1>
-          <section class="section">
-            <div class="container">
-              <div
-                id="carousel-demo"
-                class="carousel"
-                data-slides-to-scroll="3"
-              >
-                <div class="item-1">
-                  <img src={CleanTable} alt="Mesas Limpas" />
-                </div>
-                <div class="item-2">
-                  <img src={PraxisClean} alt="Confeção Alimentos" />
-                </div>
-                <div class="item-3">
-                  <img src={PraxisBeer} alt="Confeção de Cerveja" />
-                </div>
-                <div class="item-3">
-                  <img src={TeamPraxis} alt="Team Praxis" />
-                </div>
-              </div>
+        <div className="rating-container">
+          <h1>Praxis</h1>
+          <div className="rating_rest">
+            <div className="rating-ocupation">
+              <img src={OccupationImg} alt="Ocupação" />
+              <span>Cheio</span>
             </div>
-          </section>
-          <section>
-            <h1>Contatos</h1>
-            <div>
-              <img src={Phone} alt="Contato" />
-              <p>+55 4235-6873</p>
+            <div className="rating-star">
+              <img src={StarImg} alt="Rating" />
+              <span>85%</span>
             </div>
-            <div>
-              <img src={Email} alt="E-mail" />
-              <p>contato@praxis.com.br</p>
-            </div>
-          </section>
+          </div>
         </div>
+        <section className="section">
+          <div className="midia">
+            <img src={CleanTable} alt="Mesas Limpas" />
+            <img src={PraxisClean} alt="Confeção Alimentos" />
+            <img src={PraxisBeer} alt="Confeção de Cerveja" />
+            <img src={TeamPraxis} alt="Team Praxis" />
+          </div>
+        </section>
       </div>
     );
   }
