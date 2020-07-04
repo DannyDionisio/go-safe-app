@@ -1,0 +1,20 @@
+.container-infos {
+  margin: 50px 20px;
+}
+
+.hour-contacts {
+  background-color: #e8e8e8;
+  border-radius: 5px;
+  padding: 10px;
+  width: 50px;
+}
+
+.hours {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.hours img {
+  width: 30px;
+}

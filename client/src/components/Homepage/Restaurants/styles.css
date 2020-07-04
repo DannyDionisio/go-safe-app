@@ -1,0 +1,32 @@
+.container-restaurant {
+  display: grid;
+  grid-template-columns: 160px auto;
+  grid-gap: 16px;
+  height: auto;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+}
+
+.container-restaurant img {
+  width: 100%;
+}
+
+.description {
+  padding-top: 8px;
+}
+
+.description .name {
+  margin-bottom: 8px;
+}
+
+.rating {
+  margin-bottom: 2px;
+}
+
+.rating img {
+  margin-right: 6px;
+  width: 16px;
+}
+
+.rating:last-of-type {
+  margin-bottom: 0;
+}
