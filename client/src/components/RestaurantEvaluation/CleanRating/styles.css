@@ -1,13 +1,26 @@
 .container-clean {
-  width: 71px;
-  height: 68px;
   font-size: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 16px;
+  border-radius: 4px;
+  width: 71px;
+  height: 68px;
 }
 
 .container-clean img {
   width: 24px;
+}
+
+.container-clean img {
+  opacity: .3;
+}
+
+.container-clean.selected img {
+  opacity: 1;
+}
+
+.container-clean.selected {
+  box-shadow: rgba(0, 0, 0, 0.27) 0 0 6px 0;
 }

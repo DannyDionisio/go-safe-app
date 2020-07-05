@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Category from "./Category";
 import Restaurants from "./Restaurants";
 import { restaurants } from "../../database";
@@ -9,14 +10,15 @@ import pizzaImg from "./Category/assets/pizza.png";
 import macarraoImg from "./Category/assets/macarrao.png";
 import hamburguerImg from "./Category/assets/hamburguer.png";
 import sorveteImg from "./Category/assets/sorvete.png";
+import UserImg from "./Category/assets/user.svg";
 
 const categories = [
   {
-    name: "Piza",
+    name: "Pizza",
     image: pizzaImg,
   },
   {
-    name: "Chinêsa",
+    name: "Chinesa",
     image: macarraoImg,
   },
   {
@@ -32,14 +34,22 @@ const categories = [
 class Homepage extends Component {
   render() {
     return (
-      <div>
-        <div>
+      <div className="container-home">
+        <div className="search-profile">
           <p className="control has-icons-left">
-            <input className="input is-info" type="text" placeholder="Search" />
+            <input
+              className="input is-info"
+              type="text"
+              placeholder="Buscar restaurante..."
+            />
             <span className="icon is-left">
               <i className="fas fa-search" aria-hidden="true"></i>
             </span>
           </p>
+
+          <Link to="/gamification">
+            <img src={UserImg} alt="Usuário" />
+          </Link>
         </div>
         <div className="container-categories">
           {categories.map((category) => (
@@ -47,7 +57,7 @@ class Homepage extends Component {
           ))}
         </div>
         <div className="container-top">
-          <h1>Top Clean</h1>
+          <h1>Top Limpeza</h1>
           <div className="container-top__restaurants">
             {restaurants.map((restaurant) => (
               <Restaurants

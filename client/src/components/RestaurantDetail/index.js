@@ -4,11 +4,11 @@ import { getRestaurant } from "../../database";
 
 import "./styles.css";
 
-import OccupationImg from "./../Homepage/Restaurants/assets/people.svg";
+import OccupationImg from "../RestaurantEvaluation/Occupation/assets/row3.svg";
 import StarImg from "./../Homepage/Restaurants/assets/star.svg";
-import Phone from "./assets/telefone.svg";
-import Hours from "./assets/relogio.svg";
-import Whatsapp from "./assets/whatsapp.svg";
+import { ReactComponent as Hours } from "./assets/relogio.svg";
+import { ReactComponent as Phone } from "./assets/telefone.svg";
+import { ReactComponent as Whatsapp } from "./assets/whatsapp.svg";
 
 class RestaurantDetail extends Component {
   state = {
@@ -34,7 +34,7 @@ class RestaurantDetail extends Component {
         <div className="container-infos">
           <div className="hour-contacts">
             <div className="hours">
-              <img src={Hours} alt="Relógio" />
+              <Hours />
               <p>
                 {open}h às {close}h
               </p>
@@ -42,10 +42,10 @@ class RestaurantDetail extends Component {
           </div>
           <div className="contacts">
             <a href={`whatsapp://send?phone=${this.state.whatsapp}`}>
-              <img src={Whatsapp} alt="Whatsapp" />
+              <Whatsapp />
             </a>
             <a href={`tel:${this.state.cellphone}`}>
-              <img src={Phone} alt="Contato" />
+              <Phone />
             </a>
           </div>
         </div>
@@ -68,7 +68,7 @@ class RestaurantDetail extends Component {
           </div>
         </div>
         <section className="section">
-          <div className="midia">
+          <div className="restaurant-details-media">
             {this.state.images.map((image) => (
               <img key={image.id} src={image.href} alt={image.desc} />
             ))}

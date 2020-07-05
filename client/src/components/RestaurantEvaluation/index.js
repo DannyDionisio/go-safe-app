@@ -16,58 +16,116 @@ import MaskImg from "./CleanRating/assets/medical-mask.svg";
 import SanitizerImg from "./CleanRating/assets/hand-sanitizer.svg";
 import { getRestaurant } from "../../database";
 
-const occupations = [
-  {
-    name: "Vazio",
-    image: EmptyImg,
-  },
-  {
-    name: "Normal",
-    image: NormalImg,
-  },
-  {
-    name: "Cheio",
-    image: FullImg,
-  },
-];
-
 class RestaurantEvaluation extends Component {
-  state = {};
+  state = {
+    restaurant: {},
+    selectedOccupation: null,
+    selectedSanitation: [],
+  };
 
   componentDidMount() {
-    this.setState(getRestaurant(this.props.match.params.restaurantId));
+    this.setState({
+      restaurant: getRestaurant(this.props.match.params.restaurantId),
+    });
   }
 
+  handleOccupationSelection = (name) => {
+    let newValue = name;
+
+    if (this.state.selectedOccupation === name) {
+      newValue = null;
+    }
+
+    this.setState({ selectedOccupation: newValue });
+  };
+
+  handleSanitationSelection = (name) => {
+    let newValue = [...this.state.selectedSanitation, name];
+
+    if (this.state.selectedSanitation.find((s) => s === name)) {
+      newValue = this.state.selectedSanitation.filter((s) => s !== name);
+    }
+
+    this.setState({ selectedSanitation: newValue });
+  };
+
   render() {
+    const { restaurant } = this.state;
+
     return (
-      <div className="ctn-restaurant">
+      <div className="restaurant-evaluation">
         <div className="back-button">
-          <Link to={`/restaurant/${this.state.id}`}>Back</Link>
+          <Link to={`/restaurant/${restaurant.id}`}>Back</Link>
         </div>
         <div className="banner">
-          <img src={this.state.image} alt="Praxis" />
+          <img src={restaurant.image} alt="Praxis" />
         </div>
         <div className="rating-container">
           <h1>Avaliação do Estabelecimento</h1>
-          <h2>{this.state.name}</h2>
+          <h2>{restaurant.name}</h2>
           <h3>Ocupação</h3>
-          <div className="rating-occupations">
-            {occupations.map((occupation) => (
-              <Occupation name={occupation.name} image={occupation.image} />
-            ))}
+          <div className={`rating-occupations ${!!this.state.selectedOccupation ? "has-selection" : ""}`}>
+            <Occupation
+              name="Vazio"
+              image={EmptyImg}
+              selected={this.state.selectedOccupation === "Vazio"}
+              onClick={this.handleOccupationSelection}
+            />
+            <Occupation
+              name="Normal"
+              image={NormalImg}
+              selected={this.state.selectedOccupation === "Normal"}
+              onClick={this.handleOccupationSelection}
+            />
+            <Occupation
+              name="Cheio"
+              image={FullImg}
+              selected={this.state.selectedOccupation === "Cheio"}
+              onClick={this.handleOccupationSelection}
+            />
           </div>
-          <h4>Higienização</h4>
+          <h3>Higienização</h3>
           <div className="rating-clean">
             <div className="row">
-              <CleanRating name={"Distância"} image={DistanceImg} />
-              <CleanRating name={"Limpeza"} image={DishImg} />
-              <CleanRating name={"Marcações"} image={ArrowsImg} />
+              <CleanRating
+                name="Distância"
+                image={DistanceImg}
+                selected={this.state.selectedSanitation.includes("Distância")}
+                onClick={this.handleSanitationSelection}
+              />
+              <CleanRating
+                name="Limpeza"
+                image={DishImg}
+                selected={this.state.selectedSanitation.includes("Limpeza")}
+                onClick={this.handleSanitationSelection}
+              />
+              <CleanRating
+                name="Marcações"
+                image={ArrowsImg}
+                selected={this.state.selectedSanitation.includes("Marcações")}
+                onClick={this.handleSanitationSelection}
+              />
             </div>
             <div className="row">
-              <CleanRating name={"Luvas"} image={GlovesImg} />
-              <CleanRating name={"Máscara"} image={MaskImg} />
-              <CleanRating name={"Álcool"} image={SanitizerImg} />
-            </div>{" "}
+              <CleanRating
+                name="Luvas"
+                image={GlovesImg}
+                selected={this.state.selectedSanitation.includes("Luvas")}
+                onClick={this.handleSanitationSelection}
+              />
+              <CleanRating
+                name="Máscara"
+                image={MaskImg}
+                selected={this.state.selectedSanitation.includes("Máscara")}
+                onClick={this.handleSanitationSelection}
+              />
+              <CleanRating
+                name="Álcool"
+                image={SanitizerImg}
+                selected={this.state.selectedSanitation.includes("Álcool")}
+                onClick={this.handleSanitationSelection}
+              />
+            </div>
           </div>
         </div>
       </div>

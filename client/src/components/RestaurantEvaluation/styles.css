@@ -1,5 +1,24 @@
+.restaurant-evaluation h1 {
+  color: #404040;
+  font-size: 20px;
+  margin-top: 22px;
+}
+
+.restaurant-evaluation h2 {
+  color: #727272;
+  font-size: 14px;
+  margin-bottom: 22px;
+}
+
+.restaurant-evaluation h3 {
+  margin-bottom: 22px;
+  align-self: flex-start;
+  margin-left: 12px;
+}
+
 .rating-clean {
-  padding: 24px;
+  padding-left: 12px;
+  padding-right: 12px;
   width: 100%;
 }
 
@@ -10,9 +29,15 @@
   flex-flow: wrap;
 }
 
+.rating-clean .row:not(:last-of-type) {
+  margin-bottom: 8px;
+}
+
 .rating-occupations {
   display: flex;
-  padding: 24px;
-  width: 100%;
   justify-content: space-between;
+  margin-bottom: 22px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 100%;
 }
