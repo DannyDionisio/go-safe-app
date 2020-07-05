@@ -1,56 +1,77 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { getRestaurant } from "../../database";
 
 import "./styles.css";
 
-import PraxisImg from "./../Homepage/Restaurants/assets/praxis.jpg";
 import OccupationImg from "./../Homepage/Restaurants/assets/people.svg";
 import StarImg from "./../Homepage/Restaurants/assets/star.svg";
-import CleanTable from "./assets/clean-tables.jpg";
-import PraxisClean from "./assets/praxis-clean1.jpg";
-import PraxisBeer from "./assets/praxis-beer.jpg";
-import TeamPraxis from "./assets/team.jpg";
 import Phone from "./assets/telefone.svg";
 import Hours from "./assets/relogio.svg";
 import Whatsapp from "./assets/whatsapp.svg";
 
 class RestaurantDetail extends Component {
+  state = {
+    workingHours: [],
+    images: [],
+  };
+
+  componentDidMount() {
+    this.setState(getRestaurant(this.props.match.params.restaurantId));
+  }
+
   render() {
+    const [open, close] = this.state.workingHours;
+
     return (
       <div className="ctn-restaurant">
+        <div className="back-button">
+          <Link to="/">Back</Link>
+        </div>
         <div className="banner">
-          <img src={PraxisImg} alt="Praxis" />
+          <img src={this.state.image} alt="Praxis" />
         </div>
         <div className="container-infos">
           <div className="hour-contacts">
             <div className="hours">
               <img src={Hours} alt="Relógio" />
-              <p>12h às 22h</p>
+              <p>
+                {open}h às {close}h
+              </p>
             </div>
           </div>
           <div className="contacts">
-            <img src={Whatsapp} alt="Whatsapp" />
-            <img src={Phone} alt="Contato" />
+            <a href={`whatsapp://send?phone=${this.state.whatsapp}`}>
+              <img src={Whatsapp} alt="Whatsapp" />
+            </a>
+            <a href={`tel:${this.state.cellphone}`}>
+              <img src={Phone} alt="Contato" />
+            </a>
           </div>
         </div>
         <div className="rating-container">
-          <h1>Praxis</h1>
+          <h1>{this.state.name}</h1>
           <div className="rating_rest">
-            <div className="rating-ocupation">
-              <img src={OccupationImg} alt="Ocupação" />
-              <span>Cheio</span>
-            </div>
-            <div className="rating-star">
-              <img src={StarImg} alt="Rating" />
-              <span>85%</span>
-            </div>
+            <Link to={`/restaurant/1/evaluation`}>
+              <div className="rating-ocupation">
+                <img src={OccupationImg} alt="Ocupação" />
+                <span>{this.state.capacity}%</span>
+              </div>
+            </Link>
+
+            <Link to={`/restaurant/1/evaluation`}>
+              <div className="rating-star">
+                <img src={StarImg} alt="Rating" />
+                <span>{this.state.rating}%</span>
+              </div>
+            </Link>
           </div>
         </div>
         <section className="section">
           <div className="midia">
-            <img src={CleanTable} alt="Mesas Limpas" />
-            <img src={PraxisClean} alt="Confeção Alimentos" />
-            <img src={PraxisBeer} alt="Confeção de Cerveja" />
-            <img src={TeamPraxis} alt="Team Praxis" />
+            {this.state.images.map((image) => (
+              <img key={image.id} src={image.href} alt={image.desc} />
+            ))}
           </div>
         </section>
       </div>

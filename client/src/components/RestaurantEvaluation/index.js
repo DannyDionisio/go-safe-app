@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./styles.css";
 
 import Occupation from "./Occupation";
 import CleanRating from "./CleanRating";
 
-import PraxisImg from "./../Homepage/Restaurants/assets/praxis.jpg";
 import EmptyImg from "./Occupation/assets/row1.svg";
 import NormalImg from "./Occupation/assets/row2.svg";
 import FullImg from "./Occupation/assets/row3.svg";
@@ -14,6 +14,7 @@ import ArrowsImg from "./CleanRating/assets/arrows.svg";
 import GlovesImg from "./CleanRating/assets/rubber-gloves.svg";
 import MaskImg from "./CleanRating/assets/medical-mask.svg";
 import SanitizerImg from "./CleanRating/assets/hand-sanitizer.svg";
+import { getRestaurant } from "../../database";
 
 const occupations = [
   {
@@ -30,43 +31,25 @@ const occupations = [
   },
 ];
 
-const cleans = [
-  {
-    name: "Distância",
-    image: DistanceImg,
-  },
-  {
-    name: "Limpeza",
-    image: DishImg,
-  },
-  {
-    name: "Marcações",
-    image: ArrowsImg,
-  },
-  {
-    name: "Luvas",
-    image: GlovesImg,
-  },
-  {
-    name: "Máscara",
-    image: MaskImg,
-  },
-  {
-    name: "Álcool",
-    image: SanitizerImg,
-  },
-];
-
 class RestaurantEvaluation extends Component {
+  state = {};
+
+  componentDidMount() {
+    this.setState(getRestaurant(this.props.match.params.restaurantId));
+  }
+
   render() {
     return (
       <div className="ctn-restaurant">
+        <div className="back-button">
+          <Link to={`/restaurant/${this.state.id}`}>Back</Link>
+        </div>
         <div className="banner">
-          <img src={PraxisImg} alt="Praxis" />
+          <img src={this.state.image} alt="Praxis" />
         </div>
         <div className="rating-container">
           <h1>Avaliação do Estabelecimento</h1>
-          <h2>Praxis</h2>
+          <h2>{this.state.name}</h2>
           <h3>Ocupação</h3>
           <div className="rating-occupations">
             {occupations.map((occupation) => (
