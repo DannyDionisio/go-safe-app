@@ -7,6 +7,8 @@ import Homepage from "./components/Homepage";
 import RestaurantDetail from "./components/RestaurantDetail";
 import RestaurantEvaluation from "./components/RestaurantEvaluation";
 import Gamification from "./components/Gamification";
+import RestaurantDashboard from "./components/RestaurantDashboard";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
           render={(props) => <RestaurantDetail {...props} />}
         />
         <Route path="/" exact>
-          <Homepage />
+          {/*<Homepage />*/}
+          <RestaurantDashboard />
+          {/*<Login />*/}
         </Route>
         <Route
           path="/gamification"

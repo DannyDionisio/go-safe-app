@@ -4,17 +4,68 @@
   color: black;
 }
 
+.ctn-info h1 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.ctn-info p {
+  margin-top: 12px;
+}
+
 .container-gamification {
   display: flex;
   flex-direction: column;
   margin: 10px;
 }
 
-.my-cupons,
-.week-reward {
+.my-discounts h1 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.my-discounts .discount, .week-reward, .montly-reward {
+  display: grid;
+  grid-template-columns: 46px auto;
+  grid-gap: 8px;
   font-size: 12px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.28);
-  border-radius: 4px;
   padding: 8px;
-  margin-bottom: 20px;
+}
+
+.my-discounts .discount:not(:last-of-type) {
+  border-bottom: 1px solid #eaeaea;
+}
+
+.my-discounts .discount .discount-content {
+  padding: 5px 0;
+}
+
+.my-discounts .discount .discount-content span {
+  color: #949494;
+  font-weight: 600;
+}
+
+.week-reward, .montly-reward {
+  padding: 24px 12px;
+  font-weight: 600;
+  margin-top: 20px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.20);
+  border-radius: 4px;
+}
+
+.week-reward svg, .montly-reward svg {
+  height: 100%;
+  width: 100%;
+}
+
+.week-reward span, .montly-reward span {
+  font-size: 20px;
+}
+
+.montly-reward {
+  box-shadow: none;
+  background-color: #f9f9f9;
 }
