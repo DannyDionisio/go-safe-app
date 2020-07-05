@@ -13,16 +13,7 @@ import Phone from "./assets/telefone.svg";
 import Hours from "./assets/relogio.svg";
 import Whatsapp from "./assets/whatsapp.svg";
 
-import bulmaCarousel from "bulma-carousel/dist/js/bulma-carousel.min.js";
-import "bulma-carousel/dist/css/bulma-carousel.min.css";
-
 class RestaurantDetail extends Component {
-  componentDidMount() {
-    bulmaCarousel.attach("#carousel-demo", {
-      slidesToScroll: 1,
-      slidesToShow: 2,
-    });
-  }
   render() {
     return (
       <div className="ctn-restaurant">

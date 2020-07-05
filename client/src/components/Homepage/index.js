@@ -4,8 +4,6 @@ import Restaurants from "./Restaurants";
 
 import "./styles.css";
 
-import "./styles.css";
-
 import pizzaImg from "./Category/assets/pizza.png";
 import macarraoImg from "./Category/assets/macarrao.png";
 import hamburguerImg from "./Category/assets/hamburguer.png";
