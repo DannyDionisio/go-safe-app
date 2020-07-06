@@ -5,8 +5,7 @@ import "./styles.css";
 class Category extends Component {
   render() {
     return (
-      <div className="container-box">
-        <img src={this.props.image} alt="Images" />
+      <div className="category-container" style={{ backgroundImage: `url(${this.props.image})` }}>
         <p>{this.props.name}</p>
       </div>
     );

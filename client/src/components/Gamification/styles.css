@@ -48,15 +48,20 @@
   font-weight: 600;
 }
 
+.my-discounts .discount {
+  height: 63px;
+}
+
 .week-reward, .montly-reward {
   padding: 24px 12px;
   font-weight: 600;
   margin-top: 20px;
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.20);
   border-radius: 4px;
+  height: 96px;
 }
 
-.week-reward svg, .montly-reward svg {
+.week-reward svg, .montly-reward svg, .my-discounts .discount svg {
   height: 100%;
   width: 100%;
 }

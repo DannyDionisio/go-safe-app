@@ -1,3 +1,29 @@
 .container-dashboard {
-  margin: 10px;
+}
+
+.container-dashboard h1 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 8px 12px;
+}
+.container-dashboard h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  margin-top: 12px;
+}
+
+.container-dashboard-content {
+  padding: 8px 12px;
+}
+
+.classifications {
+  font-size: 14px;
+}
+
+.classifications img {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  margin-bottom: 8px;
 }

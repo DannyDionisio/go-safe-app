@@ -23,9 +23,11 @@ function App() {
           render={(props) => <RestaurantDetail {...props} />}
         />
         <Route path="/" exact>
-          {/*<Homepage />*/}
+          <Homepage />
+        </Route>
+        <Route path="/login" render={(props) => <Login {...props} />} />
+        <Route path="/dashboard" exact>
           <RestaurantDashboard />
-          {/*<Login />*/}
         </Route>
         <Route
           path="/gamification"
